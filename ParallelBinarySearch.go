@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"sort"
 	"sync"
 	"sync/atomic"
@@ -64,4 +65,25 @@ func parallelBinarySearch(arr []int, target int, numGoroutines int) int {
 	}
 
 	return -1
+}
+
+func main() {
+	// Sample sorted array
+	arr := []int{1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25}
+
+	// Define the target value to search for
+	target := 17
+
+	// Number of goroutines to use for parallel search
+	numGoroutines := 4
+
+	// Call the parallelBinarySearch function
+	result := parallelBinarySearch(arr, target, numGoroutines)
+
+	// Print the result
+	if result != -1 {
+		fmt.Printf("Target %d found at index %d\n", target, result)
+	} else {
+		fmt.Printf("Target %d not found in the array\n", target)
+	}
 }
